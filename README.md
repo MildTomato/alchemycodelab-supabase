@@ -6,7 +6,8 @@ This is a no frills, unstyled, _row level security_ secured To Do app built with
 
 Please follow the following steps to get setup.
 
-For help, please reach out to me via twitter [@jsummersmuir](https://twitter.com/jsummersmuir)
+For help, the fastest way to reach me is via twitter [@jsummersmuir](https://twitter.com/jsummersmuir).
+Please also feel free to send me feedback (good **and** bad) to me about your experience with Supabase. We'd love to improve anything you're struggling with.
 
 ## Create a Supabase project
 
@@ -82,8 +83,13 @@ Go to **Settings** (click on the Settings cog icon in the side nav bar), and the
 You'll see an `anon` key, and also a `url`.
 
 Open the .env file in the root of the todo app, and add `anon` key and `url` values for the following:
+
+```
 NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_ANON_KEY
+```
+
+If you have got ahead of yourself (naughty..) and already run `npm run dev`, you will now need to restart the app so these new env variables take effect.
 
 2. **Install dependencies and run client**
 
