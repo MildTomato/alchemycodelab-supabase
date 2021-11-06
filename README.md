@@ -6,6 +6,8 @@ This is a no frills, unstyled, _row level security_ secured To Do app built with
 
 Please follow the following steps to get setup.
 
+For help, please reach out to me via twitter [@jsummersmuir](https://twitter.com/jsummersmuir)
+
 ## Create a Supabase project
 
 Go to [app.supabase.io](https://app.supabase.io) and create an account.
