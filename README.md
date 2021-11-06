@@ -71,7 +71,7 @@ Click _confirm_, and now your table is enforcing the policies we've just added.
 
 Click on **settings** in **Auth** and disable 'Enable email confirmations'.
 
-This stops users having to click on a confirmation link when signing up.
+This stops users having to click on a confirmation link in an email when signing up.
 It's highly recommended you use this in production, but for testing purposes it can be a nuisance.
 
 ## Running the client
