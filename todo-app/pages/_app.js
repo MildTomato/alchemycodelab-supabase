@@ -1,9 +1,9 @@
 import { UserContextProvider } from "./../lib/UserContext";
-import useSupabase from "./../hooks/useSupabase";
+import supabase from "../lib/supabaseClient";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <UserContextProvider supabaseClient={useSupabase}>
+    <UserContextProvider supabaseClient={supabase}>
       <Component {...pageProps} />
     </UserContextProvider>
   );

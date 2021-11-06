@@ -1,36 +1,54 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import useSupabase from "../hooks/useSupabase";
+import supabase from "../lib/supabaseClient";
 import { useUser } from "../lib/UserContext";
 
 export default function SignUp() {
   const router = useRouter();
 
+  /*
+   * Check if a user is defined (a user is logged in)
+   * if `session` is defined, we change the route to '/dashboard'
+   *
+   * for those using nextjs, pages middleware (pages/_middleware.ts) might be
+   * a better way to handle protecting routes and redirects
+   * https://nextjs.org/docs/middleware
+   */
   const { session } = useUser();
   if (session) router.push("/dashboard");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function handleSignin(e) {
+  /*
+   * handleSignin()
+   *
+   * this is where we sign in using supabase-js
+   * supabase.auth.signIn()
+   *
+   * https://supabase.io/docs/reference/javascript/auth-signin
+   * *
+   */
+  async function handleSignIn(e) {
     e.preventDefault();
-    try {
-      const { user, session, error } = await useSupabase.auth.signIn({
-        email: email,
-        password: password,
-      });
-      console.log("user", user);
-      console.log("session", session);
-      if (error) throw error;
-    } catch (error) {
-      console.log(error);
-      alert(error.message);
+
+    const { user, session, error } = await supabase.auth.signIn({
+      email: email,
+      password: password,
+    });
+
+    if (error) {
+      console.error(error);
+      return alert(error.message);
     }
+
+    console.log("user", user);
+    console.log("session", session);
   }
 
   return (
     <main>
-      <form onSubmit={(e) => handleSignin(e)}>
+      <form onSubmit={(e) => handleSignIn(e)}>
         <h3>Sign In</h3>
         <div>
           <label htmlFor="email">Email</label>

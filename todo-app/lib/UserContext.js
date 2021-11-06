@@ -11,6 +11,7 @@ export const UserContextProvider = (props) => {
     const session = supabaseClient.auth.session();
     setSession(session);
     setUser(session?.user ?? null);
+
     const { data: authListener } = supabaseClient.auth.onAuthStateChange(
       async (event, session) => {
         setSession(session);
